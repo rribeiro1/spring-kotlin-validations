@@ -30,6 +30,8 @@ class ValidationsApplicationTests {
 
 		val violations = validator.validate(dto)
 
-		assertThat(violations).isNotEmpty()
+		assertThat(violations)
+			.extracting("invalidValue")
+			.containsExactly(dto.words[0].word)
 	}
 }
